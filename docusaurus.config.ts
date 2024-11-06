@@ -3,20 +3,20 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-  title: 'Pico_DM_YT350S006',
-  tagline: '基于树莓派Pico的LVGL开发/评估板',
-  favicon: 'img/embeddedboys-icon.png',
+  title: 'Rasberry Pi DM YT350S006',
+  tagline: '打造属于你自己的树莓派 Display HAT',
+  favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'http://embeddedboys.com',
+  url: 'http://embeddedboys.com/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: '/RPi_DM_YT350S006/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'embeddedboys', // Usually your GitHub org/user name.
-  projectName: 'embeddedboys.github.io', // Usually your repo name.
+  projectName: 'RPi_DM_YT350S006', // Usually your repo name.
   deploymentBranch: "gh-pages",
 
   onBrokenLinks: 'throw',
@@ -70,7 +70,7 @@ const config: Config = {
       title: 'embeddedboys',
       logo: {
         alt: 'embeddedboys Logo',
-        src: 'img/embeddedboys.png',
+        src: 'img/logo.svg',
       },
       items: [
         {to: '/', label: '首页', position: 'left'},

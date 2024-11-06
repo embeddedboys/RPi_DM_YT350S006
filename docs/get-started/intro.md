@@ -4,37 +4,30 @@ sidebar_position: 1
 
 # 介绍
 
-![image](./assets/dm-qd3503728-1.jpg)
+![image](./assets/IMG_20240621_064850.jpg)
 
-**Pico_DM_YT350S006** 是基于树莓派 Pico 设计的一款低成本显示拓展板，用来学习、评估、开发LVGL或其他GUI应用。
+**RPi DM YT350S006** 是基于树莓派设计的一款低成本显示拓展板，用来为树梅派提供显示交互功能。 它与传统的显示拓展板最大的区别是，直接由内核提供显示功能，相较于传统的fbcp等方案，效率有些许的提升。
+
+我们设计这款产品的初衷是，让每一个树莓派用户都可以DIY一个自己的低成本显示拓展板，所以本项目中使用的所有器材都是精挑细选且可以从淘宝上直接购买的。您可以购买我们的成品以支持我们的开发工作，同时我们也会提供一个页面，在其中详细介绍器件的购买和DIY过程。
+
+最后，祝各位 Happy Hacking!
 
 <!-- 演示视频链接:
 [https://www.bilibili.com/video/BV1aD42177CE/](https://www.bilibili.com/video/BV1aD42177CE/) -->
 
-树莓派 RP2040 是树莓派的首款微控制器。它为微控制器领域带来了高性能，低成本和易于使用的标志性价值。
+## 特性
 
-With a large on-chip memory, symmetric dual-core processor complex, deterministic bus fabric, and rich peripheral set augmented with our unique Programmable I/O (PIO) subsystem, it provides professional users with unrivalled power and flexibility.
-
-凭借巨大的片上内存、对称双核处理器、确定性总线结构和丰富的外设，以及我们独特的可编程I/O (PIO)子系统，它为专业用户提供了无与伦比的功能和灵活性。
-
-With detailed documentation, a polished MicroPython port, and a UF2 bootloader in ROM, it has the lowest possible barrier to entry for beginner and hobbyist users.
-
-有了详细的文档，一个精美的MicroPython端口，以及ROM中的UF2引导加载程序，它对初学者和爱好者用户来说具有最低的入门门槛。
-
+- 可DIY 低成本
+- 基于 DRM 显示驱动
+- Labwc 支持
+- 在 62.5Mbps 的 4-wire SPI 接口下有平均 **40fps** 的刷新率
+- 可选 IPS/TFT 显示面板
+- 可选 3.5寸电容/电阻式触摸屏
 
 
-## 产品参数
+## 产品规格
 
-|  | Pico_DM_YT350S006                    |
+|  | RPi DM YT350S006                    |
 |----------|--------------------------------------|
-| 显示屏     | 3.5寸 TFT 480x320 4-wire SPI ST7796U |
+| 显示屏     | 3.5寸 TFT 480x320 4-wire SPI ST7796U @100MHz(max) |
 | 触摸屏     | 可选 3.5寸 电容/电阻式触摸 GT911/NS2009/TSC2007                          |
-
-## 支持的平台
-
-| | Raspberry Pi Pico | Raspberry Pi Pico2 | Luckfox Pico/Pro/Max | Milk-V Duo |
-| --- | --- | --- | --- | --- |
-| 芯片       | 树莓派 RP2040                        |
-| 处理器     | 2x ARM Cortex-M0+ @ 133MHz        |
-| 内存       | 264 KB SRAM                          |
-| 闪存       | 最大 16MB                            |
