@@ -1,7 +1,7 @@
 ---
-title: "准备DIY工作"
+title: "准备工作"
 description: ""
-sidebar_position: 2
+sidebar_position: 1
 ---
 
 ## 工具准备
