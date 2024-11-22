@@ -6,7 +6,7 @@ sidebar_position: 3
 
 # 通过脚本安装最新的驱动程序
 
-# ![rpi-logo](./assets/raspberrypi-icon.svg) Pi OS
+# ![rpi-logo](./assets/raspberrypi-icon.svg) Pi OS / Ubuntu
 
 您可能需要安装这些前置软件包
 ```
@@ -18,27 +18,30 @@ sudo apt install git make -y
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/embeddedboys/rpi_dm_yt350s006_software/main/install.sh)"
 ```
 
-
-
 ## 支持的系统
 
 ### Raspberry Pi (4/5)
 - - [x] Raspberry Pi OS
 - - [ ] Ubuntu
-- - [ ] Buildroot
 
-### Orange Pi 以及其他运行linux的树莓派克隆
+:::info
 
-## 实例
+如果没有您的硬件型号或操作系统，您可能需要根据我们提供的资料手动安装驱动程序，请参考  [进阶开发](/docs/category/进阶开发) 章节中的内容
 
-假设我们正在用 Raspberry Pi 5 上用 RPi_DM_YT350S006 进行测试，它的硬件规格如下：
+:::
+
+## 这是一个例子
+
+假设我们正在 [Raspberry Pi 5](https://www.raspberrypi.com/products/raspberry-pi-5/) 上用 RPi_DM_YT350S006 进行测试，它的硬件规格如下：
 
 | RPi_DM_YT350S006  | 型号 |
 | --- | --- |
 | 屏幕面板 | YT350S006 |
 | 触摸屏 | GT911 |
 
-在运行安装脚本时，您可能需要提供一些选项，这是一个例子:
+在运行安装脚本时，您可能需要提供一些选项
+
+### 选择显示面板型号
 
 ```bash
 [ 07:19:27 ] 执行默认安装流程中。。。
@@ -50,9 +53,13 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/embeddedboys/rpi_dm_yt35
 请输入选择 [0]:
 ```
 
-（这里放一张屏幕FPC丝印图片）
+![](./assets/panel-fpc-model.jpg)
 
 根据我们当前屏幕的型号，应该选0，输入0后单击回车键确认
+
+-----------------------------------------------------------------------------
+
+### 选择触摸屏驱动IC型号
 
 ```
 [ 07:24:41 ] 请选择您的触摸屏驱动IC型号：
@@ -60,11 +67,17 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/embeddedboys/rpi_dm_yt35
 [ 07:24:41 ]     1. FT6336
 [ 07:24:41 ]     2. NS2009
 [ 07:24:41 ]     3. TSC2007
-[ 07:24:41 ] 检查您购买的屏幕，如果是电容触摸，检查商品详情中的触摸IC型号。如果是电阻触摸，检查电路板上焊接的电阻屏驱动IC的型号
+[ 07:24:41 ] 检查您购买的屏幕，如果是电容触摸，检查商品详情中的触摸IC型号。
+             如果是电阻触摸，检查电路板上焊接的电阻屏驱动IC的型号
 请输入选择 [0]:
 ```
 
-（这里放一张屏幕触摸驱动IC的图片）
+![gt911](./assets/gt911.jpg)
+![ns2009](./assets/ns2009.jpg)
+
+-----------------------------------------------------------------------------
+
+### 选择代码服务器
 
 ```
 [ 07:28:19 ] 请选择代码服务器：
@@ -73,7 +86,11 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/embeddedboys/rpi_dm_yt35
 请输入选择 [0]:
 ```
 
-按照您的网络环境选择，在本例中中选择 gitee
+请根据您的网络环境选择，在本例中中选择 gitee
+
+-----------------------------------------------------------------------------
+
+### 统计信息
 
 ```
 [ 07:29:17 ] 您选择的显示面板型号为：YT350S006
@@ -82,12 +99,20 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/embeddedboys/rpi_dm_yt35
 是否继续安装？[Y/n]
 ```
 
-输入 Y 后单击回车键确认继续安装
+所有选项完成，输出统计信息，输入 Y 后单击回车键确认继续安装
+
+-----------------------------------------------------------------------------
+
+### 脚本运行日志
 
 ```
 [ 07:30:17 ] 开始安装， 工作目录为：/home/developer/rpi_dm_yt350s006_software
 ```
-脚本将打印若干有用信息，包括您当前config.txt备份位置等
+将打印若干有用信息，包括您当前config.txt备份位置等
+
+-----------------------------------------------------------------------------
+
+### 重启请求
 
 ```
 否重启设备使改动生效？[Y/n] Y
@@ -96,4 +121,9 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/embeddedboys/rpi_dm_yt35
 
 输入 Y 后单击回车键确认重启，如果硬件连接正常，您稍后会在屏幕上看到 Pi OS 的启动界面。
 
-如果屏幕没有现实内容，无背光或有背光无现实内容，您应当检查焊接质量（DIY用户），或者联系我们进行换货处理（购买成品用户）。
+
+:::info
+
+如果屏幕无背光或有背光无显示内容，您应当检查焊接质量（DIY用户），或者联系我们进行换货处理（购买成品用户）。
+
+:::

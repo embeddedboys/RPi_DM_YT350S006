@@ -17,7 +17,7 @@ sidebar_position: 1
 
 ## 传送门
 
-### [我已经有了拓展板](/docs/get-started/firmware)
+### [我已经有了拓展板](/docs/get-started/driver-install)
 ### [我想自己DIY](/docs/diy/preparations)
 
 ## 特性
