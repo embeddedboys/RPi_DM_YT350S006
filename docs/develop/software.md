@@ -2,4 +2,4 @@
 sidebar_position: 1
 ---
 
-# 说明
+# 软件构成
