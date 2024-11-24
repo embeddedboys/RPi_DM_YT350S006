@@ -8,12 +8,12 @@ sidebar_position: 3
 
 # ![rpi-logo](./assets/raspberrypi-icon.svg) Pi OS / Ubuntu
 
-您可能需要安装这些前置软件包
+您可能需要安装以下前置软件包
 ```
 sudo apt install git make -y
 ```
 
-复制下面的命令到您的树莓派终端并执行
+将以下命令复制到您的树莓派终端并运行
 ```bash
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/embeddedboys/rpi_dm_yt350s006_software/main/install.sh)"
 ```
@@ -26,20 +26,19 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/embeddedboys/rpi_dm_yt35
 
 :::info
 
-如果没有您的硬件型号或操作系统，您可能需要根据我们提供的资料手动安装驱动程序，请参考  [进阶开发](/docs/category/进阶开发) 章节中的内容
+如果没有找到您的硬件型号或操作系统，您可能需要根据我们提供的资料手动安装驱动程序。 请参考  [进阶开发](/docs/category/进阶开发) 章节中的内容
 
 :::
 
 ## 这是一个例子
 
-假设我们正在 [Raspberry Pi 5](https://www.raspberrypi.com/products/raspberry-pi-5/) 上用 RPi_DM_YT350S006 进行测试，它的硬件规格如下：
+假设我们正在 [Raspberry Pi 5](https://www.raspberrypi.com/products/raspberry-pi-5/) 上测试 RPi_DM_YT350S006，其硬件规格如下
 
-| RPi_DM_YT350S006  | 型号 |
-| --- | --- |
-| 屏幕面板 | YT350S006 |
-| 触摸屏 | GT911 |
+| 拓展板 | 屏幕型号 | 触摸屏型号 |
+| --- | --- | --- |
+| RPi_DM_YT350S006 | YT350S006 | GT911 |
 
-在执行安装脚本时，您可能需要输入一些选项。
+在运行安装脚本时，您可能需要提供一些选项。
 
 ### 选择显示面板型号
 

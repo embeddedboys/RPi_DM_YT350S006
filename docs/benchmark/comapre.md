@@ -32,7 +32,7 @@ sidebar_position: 10
 sudo sh -c 'echo 0 > /sys/class/graphics/fbcon/cursor_blink'
 ```
 
-2. 取系统空闲状态下测试项的成绩3次平均值，四舍五入保留两位小数
+2. 在系统空闲状态下，测试项目的成绩取三次，求得平均值，并四舍五入保留两位小数
 
 3. 部分测试项耗时较长，仅取一次结果
 
