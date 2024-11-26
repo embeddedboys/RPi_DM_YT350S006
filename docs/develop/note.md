@@ -17,3 +17,9 @@ sidebar_position: 1
 #### 如何移植本项目到其他平台
 
 - 我有一个非树莓派接口的嵌入式 Linux 开发板，想要移植本项目
+
+#### DRM(Direct Rendering Module) 开发
+
+- DRM 基本概念
+- 内核 DRM 驱动开发
+- 用户空间 DRM 应用开发

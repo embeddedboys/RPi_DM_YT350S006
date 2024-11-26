@@ -14,27 +14,52 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        我们开发的每一个项目都具有完全开源的软硬件设计，基于MIT许可证
+        完全开源的软硬件设计，基于MIT许可证
       </>
     ),
   },
   {
-    title: '专注于质量',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
-    description: (
-      <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
-      </>
-    ),
-  },
-  {
-    title: '价格亲民',
+    title: 'DIY',
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        我们提供了详细的DIY教程，所有器件都是精挑细选的
+      </>
+    ),
+  },
+  {
+    title: '高效率',
+    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    description: (
+      <>
+        在树莓派5 4-wire SPI@62.5Mbps 接口下有平均 40fps 的刷新率
+      </>
+    ),
+  },
+  {
+    title: '驱动安装方便',
+    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    description: (
+      <>
+        您可以简单地通过 curl 获取并执行我们提供的脚本完成驱动安装
+      </>
+    ),
+  },
+  {
+    title: 'DRM驱动开发',
+    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    description: (
+      <>
+        使用此拓展板初步了解内核DRM驱动开发
+      </>
+    ),
+  },
+  {
+    title: '广泛的兼容性',
+    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    description: (
+      <>
+        随着项目的开发，更多的屏幕及触摸型号将被支持
       </>
     ),
   },
