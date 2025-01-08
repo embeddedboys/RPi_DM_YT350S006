@@ -25,7 +25,7 @@ sidebar_position: 1
 - 基于 DRM 显示驱动
 - Labwc 支持
 - 一行式驱动安装脚本
-- 在 62.5Mbps 的 4-wire SPI 接口下有平均 **40fps** 的刷新率<sup>1</sup>
+- 在 100Mbps 的 4-wire SPI 接口下有平均 **40fps** 的刷新率<sup>1</sup>
 - 可选 IPS/TFT 显示面板
 - 可选 3.5寸电容/电阻式触摸屏
 
