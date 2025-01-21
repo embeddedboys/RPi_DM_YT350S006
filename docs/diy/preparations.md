@@ -93,9 +93,15 @@ TFT 是液晶屏的基础技术，成本低，但视角和色彩表现一般；I
 
 :::tip
 
-我们提供两种Type-C母座供您选择，您可以根据个人喜好选择适合的一种。
+我们提供多种Type-C母座供您选择，您应该按照PCB上的封装选择适合的一种。
 
 :::
+
+![type-c-smd](./assets/type-c-smd.jpg)
+
+| 器件链接     | 颜色分类 | 数量 |
+|--------|----------------------| --- |
+| [USB Type-C 16P母座卧贴四脚全贴高清传输接口快充插座USB连接器](https://item.taobao.com/item.htm?_u=l1m6r7hsdf3c&id=737608633825) | 橙、黑色任选 | 1                    |
 
 ![type-c-colorful](./assets/type-c-colorful.jpg)
 
@@ -172,6 +178,8 @@ NS2009 和 TSC2007 的功能相似，但 TSC2007 配备了硬件滤波器，因�
 
 本项目的PCB工程基于嘉立创EDA设计，目前已经开源到嘉立创开源广场。
 
+[https://oshwhub.com/embeddedboys/rpi_dm_yt350s006](https://oshwhub.com/embeddedboys/rpi_dm_yt350s006)
+
 ### 选择PCB工程
 
 :::tip
@@ -180,19 +188,19 @@ NS2009 和 TSC2007 的功能相似，但 TSC2007 配备了硬件滤波器，因�
 
 :::
 
-#### [RPi_DM_YT350S006]
+#### [RPi_DM_YT350S006](https://oshwhub.com/embeddedboys/rpi_dm_yt350s006)
 
 兼容的屏幕型号：
 
-- YT350S006
-- HP35006-D
+- [YT350S006](https://item.taobao.com/item.htm?_u=o1m6r7hs78cf&id=521624918530&spm=a1z09.2.0.0.7df32e8dWy47pb)
+- [HP35006-D](https://item.taobao.com/item.htm?_u=o1m6r7hs1efd&id=680271103710&spm=a1z09.2.0.0.7df32e8dWy47pb&skuId=5045244538637)
 
-#### [RPi_DM_CL35BC219-40A]
+#### [RPi_DM_CL35BC219-40A](https://oshwhub.com/embeddedboys/rpi_dm_yt350s006)
 
 兼容的屏幕型号：
 
-- CL35BC219-40A
-- CL35BC1017-40A
+- [CL35BC219-40A](https://item.taobao.com/item.htm?_u=o1m6r7hs6e37&id=746111420119&spm=a1z09.2.0.0.7df32e8dWy47pb&skuId=5144682556436)
+- [CL35BC1017-40A](https://item.taobao.com/item.htm?_u=o1m6r7hs443f&id=746237125081&spm=a1z09.2.0.0.7df32e8dWy47pb)
 
 ### 生成Gerber文件
 
