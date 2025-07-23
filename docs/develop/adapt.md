@@ -2,4 +2,4 @@
 sidebar_position: 3
 ---
 
-# 适配
+# 适配新屏幕
