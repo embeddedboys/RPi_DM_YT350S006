@@ -42,14 +42,22 @@ npm install
 
 ### 本地开发
 
-```
-npm run start
+```bash
+yarn run start
 ```
 
 这条命令会启动一个本地开发服务器，并自动打开浏览器窗口。大多数更改会实时生效，无需重启服务器。
 
 ### 构建
 
+```bash
+yarn run build
 ```
-npm run build
+
+### 部署
+
+通常只有管理员才能将网站发布到 GitHub 页面。 部署文档只需在根目录中运行
+
+```bash
+yarn deploy
 ```

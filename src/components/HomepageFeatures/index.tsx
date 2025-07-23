@@ -32,7 +32,7 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        在树莓派5 4-wire SPI@62.5Mbps 接口下有平均 40fps 的刷新率
+        在树莓派5 4-wire SPI@100Mbps 接口下有平均 40fps 的刷新率
       </>
     ),
   },
