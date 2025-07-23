@@ -363,7 +363,7 @@ backlight {
 
 #### 1. 系统中缺少 gpio-backlight 驱动的 ko 文件
 
-在树莓派上，这个驱动位于 `/lib/modules/$(uname -r)/kernel/drivers/video/backlight/gpio-backlight.ko`。 但是我没有在 OrangePi-One 上找到这个驱动文件。
+在树莓派上，这个驱动位于 `/lib/modules/$(uname -r)/kernel/drivers/video/backlight/gpio-backlight.ko`。 但是我没有在 OrangePi-One 上找到这个驱动文件，同时我尝试了在 dt overlay 文件中调用这个驱动，没有起效，说明这个驱动没有被编译到系统或者内核中去。 
 
 #### 2. 系统中有 pwm-backlight 驱动，但是 PD14 引脚没有 PWM 功能
 
@@ -381,7 +381,7 @@ static const struct sunxi_desc_pin sun8i_h3_pins[] = {
 
 那么最后我是如何解决这个问题的？好吧，如你所见，我尝试了一些方法，但是都不能实现在屏幕驱动加载时自动开启背光。 
 
-我调转了思路，在启动时，驱动加载前自动将背光点亮。 虽然不够优雅，但是起码可以正常工作。 所以我尝试了一些方法，但还是遇到了一些问题，不过最后还是解决了，下面来逐个分析：
+所以我调转了思路，在启动时，驱动加载前自动将背光点亮。 虽然不够优雅，但是起码可以正常工作。 我尝试了一些方法，但还是遇到了一些问题，不过最后还是解决了，下面来逐个分析：
 
 #### 3. gpio-hog 配置可以让某个指定引脚在 gpiochip 加载时设置一个固定状态
  
@@ -468,7 +468,7 @@ int gpiod_hog(struct gpio_desc *desc, const char *name,
 }
 ```
 
-我在google上搜索了相关问题，还有了些意外收获，树莓派的pinctrl驱动在早期版本因为pinctrl和gpiochip注册顺序问题导致了 gpio-hog 没有被正常处理，可以到如下树莓派论坛查看原贴内容
+我google了相关问题，还有了些意外收获，树莓派的pinctrl驱动在早期版本因为pinctrl和gpiochip注册顺序问题导致了 gpio-hog 没有被正常处理，可以到如下树莓派论坛查看原贴内容
 
 https://forums.raspberrypi.com/viewtopic.php?t=260600
 
@@ -476,9 +476,9 @@ https://forums.raspberrypi.com/viewtopic.php?t=260600
 
 https://github.com/raspberrypi/linux/pull/3394
 
-修改内容大致上是将 pinctrl 驱动的注册放到了 gpiochip 之前，产生这种问题的原因主要是现在处理器的pinctrl驱动大部分都是 pinctrl 和 gpiochip 驱动混合在一起的。
+修改内容大致上是将 pinctrl 驱动的注册放到了 gpiochip 之前，产生这种问题的原因主要是现在大部分处理器的pinctrl驱动都是将 pinctrl 和 gpiochip 驱动混合在一起编写。
 
-所以我查看了全志平台的 pinctrl 驱动，发现它并没有这个注册顺序问题，所以我不知所措了：
+所以我查看了全志平台的 pinctrl 驱动，发现它并没有这个注册顺序问题，我不知所措了：
 
 `drivers/pinctrl/sunxi/pinctrl-sunxi.c`
 ```c
@@ -521,13 +521,25 @@ int sunxi_pinctrl_init_with_variant(struct platform_device *pdev,
 	if (ret)
 		return ret;
 
+	for (i = 0; i < pctl->desc->npins; i++) {
+		const struct sunxi_desc_pin *pin = pctl->desc->pins + i;
+
+		ret = gpiochip_add_pin_range(pctl->chip, dev_name(&pdev->dev),
+					     pin->pin.number - pctl->desc->pin_base,
+					     pin->pin.number, 1);
+		if (ret)
+			goto gpiochip_error;
+	}
+
 	...
 }
 ```
 
 我不知道这是不是由于缺少了 `pinctrl_add_gpio_range` 调用的缘故，你可以看到树莓派的 pinctrl 驱动（`drivers/pinctrl/bcm/pinctrl-bcm2835.c`）这么做了，全志的 pinctrl 驱动则使用了 `gpiochip_add_pin_range`。 
 
-总之我没有让 `gpio-hog` 在这个平台上成功启用，我不是 pinctrl 与 gpio 驱动的专家，且由于修改内核代码不是很方便，你需要拉取armbian 的 build 仓库构建，操作起来类似于buildroot。 我也没有太多精力能放在这上面，所以我也就没有继续研究下去了。
+总之我没有让 `gpio-hog` 在这个平台上成功启用，我不是 pinctrl 与 gpio 驱动的专家，且由于修改内核代码不是很方便，你需要拉取 armbian 的 build 仓库构建，操作起来类似于buildroot。 
+
+我相信这个问题肯定能够解决，可能会产生新的patch。不过我暂时没有太多精力能放在这上面，所以我也就没有继续研究下去了。
 
 #### 4. 取巧的方法，通过 gpio-leds 驱动点亮背光
 
@@ -550,7 +562,7 @@ int sunxi_pinctrl_init_with_variant(struct platform_device *pdev,
 	};
 ```
 
-这个 `pwr_led` 位于 OrangePi-One 正面的 gpio 接口旁，绿色灯光，鉴于它是连接到某个gpio引脚，所以它是正常工作的。 但是我没有在 `/lib/modules/$(uname -r)/kernel/drivers/leds` 下找到这个驱动，这说明它被编译进了内核中。
+这个 `pwr_led` 位于 OrangePi-One 正面的 gpio 接口旁，绿色灯光，鉴于它连接到了某个gpio引脚，所以它是正常工作的。 但是我没有在 `/lib/modules/$(uname -r)/kernel/drivers/leds` 下找到这个驱动，这说明它被编译进了内核中。
 
 所以我仿照它编写了一个背光灯配置节点，结果很成功。 不过屏幕背光被过早地开启了。
 
@@ -576,4 +588,23 @@ int sunxi_pinctrl_init_with_variant(struct platform_device *pdev,
 
 ### 让触摸屏工作起来
 
+Still under development
+
 ## 参考资料
+
+https://github.com/notro/panel-mipi-dbi/wiki
+
+https://github.com/armbian/sunxi-DT-overlays/blob/master/sun8i-h3/sun8i-h3-w1-gpio.dts
+
+https://elixir.bootlin.com/linux/v6.1.99/source/arch/arm/boot/dts/sun8i-h3-orangepi-one.dts
+https://elixir.bootlin.com/linux/v6.1.99/source/drivers/gpu/drm/drm_mipi_dbi.c
+https://elixir.bootlin.com/linux/v6.1.99/source/drivers/gpu/drm/tiny/panel-mipi-dbi.c
+https://elixir.bootlin.com/linux/v6.1.99/source/drivers/pinctrl/sunxi/pinctrl-sunxi.c
+https://elixir.bootlin.com/linux/v6.1.99/source/drivers/gpio/gpiolib-of.c
+https://elixir.bootlin.com/linux/v6.1.99/source/drivers/gpio/gpiolib.c#L4182
+
+https://www.kernel.org/doc/Documentation/devicetree/bindings/gpio/gpio.txt
+
+[Problem with gpio-hog](https://forums.raspberrypi.com/viewtopic.php?t=260600)
+
+[pinctrl: bcm2835: Change init order for gpio hogs](https://github.com/raspberrypi/linux/pull/3394)
