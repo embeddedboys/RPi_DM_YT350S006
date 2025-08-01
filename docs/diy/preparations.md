@@ -29,7 +29,7 @@ sidebar_position: 1
 | [耀元鸿3.5寸TFT液晶显示屏并口串口电阻屏5点电容屏GT911彩屏LCD](https://item.taobao.com/item.htm?_u=o1m6r7hs78cf&id=521624918530&spm=a1z09.2.0.0.7df32e8dWy47pb) | ST7796U-显示屏 | YT350S006 | TFT | 无 |  25.9 |
 | [耀元鸿3.5寸TFT液晶屏IPS全视角显示屏5点电容屏触摸LCD彩屏GT911](https://item.taobao.com/item.htm?_u=o1m6r7hs1efd&id=680271103710&spm=a1z09.2.0.0.7df32e8dWy47pb&skuId=5045244538637) | 显示屏 | HP35006-D | IPS | 无 | 29.9 |
 | [3.5寸显示屏模块TFT电阻电容触摸屏插接40pin串口屏ST7796ILI9488](https://item.taobao.com/item.htm?_u=o1m6r7hs443f&id=746237125081&spm=a1z09.2.0.0.7df32e8dWy47pb) | ST7796-TFT显示屏（不带触摸）| CL35BC1017-40A | TFT | 无 | 26 |
-| [3.5寸SPI串口屏MCU电容触摸屏IPS显示屏模块ST7796/9488插接40pin](https://item.taobao.com/item.htm?_u=o1m6r7hs6e37&id=746111420119&spm=a1z09.2.0.0.7df32e8dWy47pb&skuId=5144682556436) | ST7796-IPS显示屏（不带触摸） | CL35BC219-40A | IPS | 无 | 28 |
+| [3.5寸SPI串口屏MCU电容触摸屏IPS显示屏模块ST7796/9488插接40pin](https://item.taobao.com/item.htm?id=746111420119&spm=a21xtw.29178619.0.0&skuId=5144682556436) | ST7796-IPS显示屏（不带触摸） | CL35BC219-40A | IPS | 无 | 28 |
 
 
 
