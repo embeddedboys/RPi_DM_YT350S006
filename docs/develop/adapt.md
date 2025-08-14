@@ -121,7 +121,9 @@ git clone https://github.com/embeddedboys/rpi_dm_yt350s006_software.git
 cd rpi_dm_yt350s006_software
 ```
 
-根据提取的初始化代码，编写 mipi-cmd 源文件，这里新建一个文件命名为 [`rpi-dm-cl35bc1017-40a.txt`](https://github.com/embeddedboys/rpi_dm_yt350s006_software/blob/main/rpi-dm-cl35bc1017-40a.txt)，内容如下：
+### 1. 添加 [rpi-dm-cl35bc1017-40a.txt](https://github.com/embeddedboys/rpi_dm_yt350s006_software/blob/main/rpi-dm-cl35bc1017-40a.txt)
+
+根据提取的初始化代码，编写 mipi-cmd 源文件，这里新建一个文件命名为 [`rpi-dm-cl35bc1017-40a.txt`](https://github.com/embeddedboys/rpi_dm_yt350s006_software/blob/main/rpi-dm-cl35bc1017-40a.txt)，我使用AI来帮我完成这一工作，文件内容如下：
 ```c
 command 0x11
 delay 120
@@ -143,6 +145,20 @@ delay 120
 command 0x29
 ```
 
+这里还需要做一些修改，比如屏幕的显示方向：
+```diff
+-command 0x36 0x48
++command 0x36 0x28
+```
+
+这是手册中关于 MADCTRL (36h) 寄存器的说明：
+
+![MADCTL](./assets/MADCTL.png)
+
+默认情况下，屏幕以竖向 320x480 ，从左到右，从上到下显示。 这里的 `0x28` 设置了 `MV` 位表示**交换行列地址**，表现在屏幕上就是**顺时针旋转90°**。 通过设置 `MY`, `MX`, `MV`, `ML`, `MH`这几个位，就可以实现屏幕的90,180,270度旋转。
+
+### 2. 更新 Makefile
+
 修改 [`Makefile`](https://github.com/embeddedboys/rpi_dm_yt350s006_software/blob/main/Makefile)，加入新文件的编译操作
 ```diff
 diff --git a/Makefile b/Makefile
@@ -158,6 +174,8 @@ index e9526bc..b46fee9 100644
         dtc -@ -Hepapr -I dts -O dtb -o focaltech-ft6236.dtbo focaltech-ft6236.dts
         dtc -@ -Hepapr -I dts -O dtb -o ti-tsc2007.dtbo ti-tsc2007.dts
 ```
+
+### 3. 在 [`install.sh`](https://github.com/embeddedboys/rpi_dm_yt350s006_software/blob/main/install.sh) 中添加新型号支持
 
 修改 [`install.sh`](https://github.com/embeddedboys/rpi_dm_yt350s006_software/blob/main/install.sh)，添加安装过程中的型号支持
 
